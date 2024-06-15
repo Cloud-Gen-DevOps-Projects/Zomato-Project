@@ -1,7 +1,7 @@
 pipeline{
 	agent any 
 	tools{
-		jdk 'jdk17'
+		jdk 'jdk-17.0.11'
 		nodejs 'node16'
 	}
 	environment{
@@ -20,7 +20,7 @@ pipeline{
 		}
 		stage("SonarQube Code Analysis"){
 			steps{
-				withSonarQubeEnv('sonar-scanner'){
+				withSonarQubeEnv('codequality'){
 					sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=zomato \
                     -Dsonar.projectKey=zomato '''
 				}
